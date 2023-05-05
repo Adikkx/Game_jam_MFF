@@ -5,83 +5,60 @@ using UnityEngine.InputSystem;
 
 public class Player_movement : MonoBehaviour
 {
-    private Rigidbody2D rb2D;
-   // private Animator animate;
-
-    private float moveSpeed;
-    private float jumpForce;
-    private bool isJumping;
-    private bool facingRight = true;
-
-    private InputAction movementInputAction;
-
+    public float moveSpeed = 1f;
+    public float collisionOffset = 0.05f;
+    public ContactFilter2D movementFilter;
+    Vector2 movementInput;
+    private Rigidbody2D body;
+    SpriteRenderer spriteRenderer;
+    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = gameObject.GetComponent<Rigidbody2D>();
-    //    animate = gameObject.GetComponent<Animator>();
-
-        moveSpeed = 9.5f;
-        jumpForce = 100f;
-        isJumping = false;
-        facingRight = true;
-
-        movementInputAction = new InputAction("move", InputActionType.Value, "<Keyboard>/W, A, S, D");
-        movementInputAction.Enable();
+        body = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        Vector2 moveInput = movementInputAction.ReadValue<Vector2>();
-        //animate.SetFloat("Speed", Mathf.Abs(moveInput.x));
+        if (movementInput != Vector2.zero)
+        {
+            bool success = TryMove(movementInput);
+            if (!success)
+            {
+                success = TryMove(new Vector2(movementInput.x, 0));
 
-        if (moveInput.x < 0 && facingRight)
-        {
-            Flip();
-        }
-        if (moveInput.x > 0 && !facingRight)
-        {
-            Flip();
+                if (!success)
+                {
+                    success = TryMove(new Vector2(0, movementInput.y));
+                }
+            }
+
+            if (movementInput.x < 0) spriteRenderer.flipX = true;
+            else if (movementInput.x > 0) spriteRenderer.flipX = false;
         }
     }
 
-    void FixedUpdate()
+    private bool TryMove(Vector2 direction)
     {
-        Vector2 moveInput = movementInputAction.ReadValue<Vector2>();
-
-        if (moveInput.x > 0.1f || moveInput.x < -0.1f)
+        if (direction == Vector2.zero) return false;
+        int count = body.Cast(direction, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
+        if (count == 0)
         {
-            rb2D.AddForce(new Vector2(moveInput.x * moveSpeed, 0f), ForceMode2D.Impulse);
+            body.MovePosition(body.position + direction * moveSpeed * Time.fixedDeltaTime);
+            return true;
         }
-
-        if (!isJumping && moveInput.y > 0.1f)
-        {
-            rb2D.AddForce(new Vector2(0f, moveInput.y * jumpForce), ForceMode2D.Impulse);
-        }
+        return false;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnMove(InputValue movementValue)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isJumping = false;
-        }
-    }
+        movementInput = movementValue.Get<Vector2>();
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isJumping = true;
-        }
     }
+    
 
-    void Flip()
-    {
-        facingRight = !facingRight;
-        Vector2 currentScale = transform.localScale;
-        currentScale.x *= -1;
-        transform.localScale = currentScale;
-    }
+    
+
+    
 }
