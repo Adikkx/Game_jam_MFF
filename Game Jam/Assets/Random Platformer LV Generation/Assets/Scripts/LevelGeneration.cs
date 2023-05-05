@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LevelGeneration : MonoBehaviour {
@@ -15,7 +16,7 @@ public class LevelGeneration : MonoBehaviour {
     public float moveIncrement;
     private float timeBtwSpawn;
     public float startTimeBtwSpawn;
-
+    InputAction myAction = new InputAction(binding: "/*/<Space>");
     public LayerMask whatIsRoom;
     
 
@@ -32,7 +33,7 @@ public class LevelGeneration : MonoBehaviour {
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
