@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -32,7 +33,7 @@ public class LevelGeneration : MonoBehaviour
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         player.transform.position = transform.position;
-        camera.transform.position = transform.position;
+        camera.GetComponent<CinemachineVirtualCamera>().Follow = startingPositions[randStartingPos];
         Instantiate(rooms[1], transform.position, Quaternion.identity);
 
         direction = Random.Range(1, 6);
