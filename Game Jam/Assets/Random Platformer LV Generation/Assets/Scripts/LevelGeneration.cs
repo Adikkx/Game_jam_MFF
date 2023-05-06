@@ -153,7 +153,7 @@ public class LevelGeneration : MonoBehaviour
                         int rando = Random.Range(0, 2);
                         if (rando == 0 || doorRoom)
                             Instantiate(rooms[4], transform.position, Quaternion.identity);
-                        else if (rando == 1 && !(doorRoom) && transform.position == new Vector3(transform.position.x, -25, transform.position.z)/* && transform.position.y != null && transform.position.y == minY*/)
+                        else if (rando == 1 && !(doorRoom)/* && transform.position == new Vector3(transform.position.x, -25, transform.position.z)&& transform.position.y != null && transform.position.y == minY*/)
                         {
                             print("jsem tu");
 
