@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142016954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 5, z: 0}
+  m_LocalPosition: {x: -20.1, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -167,7 +167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPositions: []
-  rooms: []
+  rooms:
+  - {fileID: 1126101229901138, guid: 18b57c302d0e0f7488a57e33d903fa5f, type: 3}
+  - {fileID: 1656818316052936, guid: 242e3886254cd184cad46181da132ff3, type: 3}
+  - {fileID: 1295459993966546, guid: 0f3eb2722e535cc4d98aa914b87f7dd9, type: 3}
+  - {fileID: 1585976779778118, guid: a54e11b035cc86a44a3649846f45cae5, type: 3}
+  - {fileID: 1085056731411214, guid: d419687839059454ca139b091962f13a, type: 3}
   moveIncrement: 0
   startTimeBtwSpawn: 0
   whatIsRoom:
@@ -197,8 +202,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211895792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -8.6, y: 0.2, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children:
   - {fileID: 1804352777}
   - {fileID: 1777421730}
@@ -231,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381933674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -19.5, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 906480184}
