@@ -14,6 +14,7 @@ public class LevelGeneration : MonoBehaviour
     private bool stopGeneration;
     private int downCounter;
     public GameObject player;
+    public GameObject camera;
     public float moveIncrementX;
     public float moveIncrementY;
     public float minX;
@@ -31,6 +32,7 @@ public class LevelGeneration : MonoBehaviour
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         player.transform.position = transform.position;
+        camera.transform.position = transform.position;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
 
         direction = Random.Range(1, 6);
