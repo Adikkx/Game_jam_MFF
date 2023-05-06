@@ -10,7 +10,7 @@ public class LevelGeneration : MonoBehaviour
 
     public Transform[] startingPositions;
     public GameObject[] rooms; // index 0 --> closed, index 1 --> LR, index 2 --> LRB, index 3 --> LRT, index 4 --> LRBT
-
+    public GameObject[] doorRooms; // index 0 --> closed, index 1 --> LR, index 2 --> LRB, index 3 --> LRT, index 4 --> LRBT
     private int direction;
     private bool stopGeneration;
     private int downCounter;
@@ -25,6 +25,8 @@ public class LevelGeneration : MonoBehaviour
     public float startTimeBtwSpawn;
     private Vector3 pos;
     public LayerMask whatIsRoom;
+    private bool doorRoom;
+    private int rando;
 
 
     private void Start()
@@ -36,7 +38,9 @@ public class LevelGeneration : MonoBehaviour
         camera.GetComponent<CinemachineVirtualCamera>().Follow = startingPositions[randStartingPos];
         pos = new Vector3(transform.position.x, transform.position.y, -1);
         transform.position = pos;
+        doorRoom = false;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
+        //Instantiate(doorRooms[1], new Vector2(transform.position.x + 2*maxX, transform.position.y), Quaternion.identity);
         direction = Random.Range(1, 6);
     }
 
@@ -45,6 +49,7 @@ public class LevelGeneration : MonoBehaviour
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
+            doorRoom = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -73,9 +78,16 @@ public class LevelGeneration : MonoBehaviour
                 int randRoom = Random.Range(1, 4);
                 pos = new Vector3(transform.position.x + moveIncrementX, transform.position.y, -1);
                 transform.position = pos;
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                rando = Random.Range(0, 2);
+                if (rando == 0 || doorRoom)
+                    Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                {
+                    Instantiate(doorRooms[randRoom%4], transform.position, Quaternion.identity);
+                    doorRoom = true;
+                }
 
-                // Makes sure the level generator doesn't move left !
+                    // Makes sure the level generator doesn't move left !
                 direction = Random.Range(1, 6);
                 if (direction == 3)
                 {
@@ -101,8 +113,14 @@ public class LevelGeneration : MonoBehaviour
                 transform.position = pos;
 
                 int randRoom = Random.Range(1, 4);
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-
+                rando = Random.Range(0, 2);
+                if (rando == 0 || doorRoom)
+                    Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                {
+                    Instantiate(doorRooms[randRoom % 4], transform.position, Quaternion.identity);
+                    doorRoom = true;
+                }
                 direction = Random.Range(3, 6);
             }
             else
@@ -129,7 +147,14 @@ public class LevelGeneration : MonoBehaviour
                     {
                         previousRoom.GetComponent<Room>().RoomDestruction();
                         transform.position = new Vector3(transform.position.x, transform.position.y, -1);
-                        Instantiate(rooms[4], transform.position, Quaternion.identity);
+                        rando = Random.Range(0, 2);
+                        if (rando == 0 || doorRoom)
+                            Instantiate(rooms[4], transform.position, Quaternion.identity);
+                        else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                        {
+                            Instantiate(doorRooms[3], transform.position, Quaternion.identity);
+                            doorRoom = true;
+                        }
                     }
                     else
                     {
@@ -141,7 +166,14 @@ public class LevelGeneration : MonoBehaviour
                         }
 
                         transform.position = new Vector3(transform.position.x, transform.position.y, -1);
-                        Instantiate(rooms[randRoomDownOpening], transform.position, Quaternion.identity);
+                        rando = Random.Range(0, 2);
+                        if (rando == 0 || doorRoom)
+                            Instantiate(rooms[randRoomDownOpening], transform.position, Quaternion.identity);
+                        else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                        {
+                            Instantiate(doorRooms[randRoomDownOpening % 4], transform.position, Quaternion.identity);
+                            doorRoom = true;
+                        }
                     }
 
                 }
@@ -153,7 +185,14 @@ public class LevelGeneration : MonoBehaviour
 
                 // Makes sure the room we drop into has a TOP opening !
                 int randRoom = Random.Range(3, 5);
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                rando = Random.Range(0, 2);
+                if (rando == 0 || doorRoom)
+                    Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                {
+                    Instantiate(doorRooms[randRoom % 4], transform.position, Quaternion.identity);
+                    doorRoom = true;
+                }
 
                 direction = Random.Range(1, 6);
             }
