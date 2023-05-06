@@ -75,15 +75,16 @@ public class LevelGeneration : MonoBehaviour
             if (transform.position.x < maxX)
             {
                 downCounter = 0;
-                int randRoom = Random.Range(1, 4);
+                int randRoom = Random.Range(1, 3);
                 pos = new Vector3(transform.position.x + moveIncrementX, transform.position.y, -1);
                 transform.position = pos;
-                rando = Random.Range(0, 2);
+                int rando = Random.Range(0, 2);
                 if (rando == 0 || doorRoom)
                     Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-                else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                else if (rando == 1 && !(doorRoom) && transform.position == new Vector3(transform.position.x, -25, transform.position.z)/* && transform.position.y != null && transform.position.y == minY*/)
                 {
-                    Instantiate(doorRooms[randRoom%4], transform.position, Quaternion.identity);
+                    print("jsem tu");
+                    Instantiate(doorRooms[randRoom], transform.position, Quaternion.identity);
                     doorRoom = true;
                 }
 
@@ -112,13 +113,15 @@ public class LevelGeneration : MonoBehaviour
                 Vector3 pos = new Vector3(transform.position.x - moveIncrementX, transform.position.y, -1);
                 transform.position = pos;
 
-                int randRoom = Random.Range(1, 4);
-                rando = Random.Range(0, 2);
+                int randRoom = Random.Range(1, 3);
+                int rando = Random.Range(0, 2);
                 if (rando == 0 || doorRoom)
                     Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-                else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                else if (rando == 1 && !(doorRoom) && transform.position == new Vector3(transform.position.x, -25, transform.position.z)/* && transform.position.y != null && transform.position.y == minY*/)
                 {
-                    Instantiate(doorRooms[randRoom % 4], transform.position, Quaternion.identity);
+                    print("jsem tu");
+
+                    Instantiate(doorRooms[randRoom], transform.position, Quaternion.identity);
                     doorRoom = true;
                 }
                 direction = Random.Range(3, 6);
@@ -147,31 +150,35 @@ public class LevelGeneration : MonoBehaviour
                     {
                         previousRoom.GetComponent<Room>().RoomDestruction();
                         transform.position = new Vector3(transform.position.x, transform.position.y, -1);
-                        rando = Random.Range(0, 2);
+                        int rando = Random.Range(0, 2);
                         if (rando == 0 || doorRoom)
                             Instantiate(rooms[4], transform.position, Quaternion.identity);
-                        else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                        else if (rando == 1 && !(doorRoom) && transform.position == new Vector3(transform.position.x, -25, transform.position.z)/* && transform.position.y != null && transform.position.y == minY*/)
                         {
-                            Instantiate(doorRooms[3], transform.position, Quaternion.identity);
+                            print("jsem tu");
+
+                            Instantiate(doorRooms[4], transform.position, Quaternion.identity);
                             doorRoom = true;
                         }
                     }
                     else
                     {
                         previousRoom.GetComponent<Room>().RoomDestruction();
-                        int randRoomDownOpening = Random.Range(2, 5);
+                        int randRoomDownOpening = Random.Range(2, 4);
                         if (randRoomDownOpening == 3)
                         {
                             randRoomDownOpening = 2;
                         }
 
                         transform.position = new Vector3(transform.position.x, transform.position.y, -1);
-                        rando = Random.Range(0, 2);
+                        int rando = Random.Range(0, 2);
                         if (rando == 0 || doorRoom)
                             Instantiate(rooms[randRoomDownOpening], transform.position, Quaternion.identity);
-                        else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                        else if (rando == 1 && !(doorRoom) && transform.position == new Vector3(transform.position.x, -25, transform.position.z)/* && transform.position.y != null && transform.position.y == minY*/)
                         {
-                            Instantiate(doorRooms[randRoomDownOpening % 4], transform.position, Quaternion.identity);
+                            print("jsem tu");
+
+                            Instantiate(doorRooms[randRoomDownOpening], transform.position, Quaternion.identity);
                             doorRoom = true;
                         }
                     }
@@ -184,13 +191,15 @@ public class LevelGeneration : MonoBehaviour
                 transform.position = pos;
 
                 // Makes sure the room we drop into has a TOP opening !
-                int randRoom = Random.Range(3, 5);
+                int randRoom = Random.Range(3, 4); 
                 rando = Random.Range(0, 2);
                 if (rando == 0 || doorRoom)
                     Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-                else if (rando == 1 && !(doorRoom) && transform.position.y == minY)
+                else if (rando == 1 && !(doorRoom) && transform.position == new Vector3(transform.position.x, -25, transform.position.z)/* && transform.position.y != null && transform.position.y == minY*/)
                 {
-                    Instantiate(doorRooms[randRoom % 4], transform.position, Quaternion.identity);
+                    print("jsem tu");
+
+                    Instantiate(doorRooms[randRoom], transform.position, Quaternion.identity);
                     doorRoom = true;
                 }
 
@@ -202,5 +211,5 @@ public class LevelGeneration : MonoBehaviour
             }
 
         }
-    }
+    } // && transform.position.y != null && transform.position.y == minY
 }
