@@ -10,6 +10,6 @@ public class SpawnPoint : MonoBehaviour {
     {
         int rand = Random.Range(0, objectsToSpawn.Length);
         GameObject instance = Instantiate(objectsToSpawn[rand], transform.position, Quaternion.identity);
-        instance.transform.parent = transform;
+        //instance.transform.parent = transform;
     }
 }
