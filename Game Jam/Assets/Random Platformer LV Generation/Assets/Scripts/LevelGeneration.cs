@@ -41,7 +41,7 @@ public class LevelGeneration : MonoBehaviour
         doorRoom = false;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
         //Instantiate(doorRooms[1], new Vector2(transform.position.x + 2*maxX, transform.position.y), Quaternion.identity);
-        direction = Random.Range(1, 6);
+        direction = Random.Range(0, 5);
     }
 
     private void Update()
@@ -147,7 +147,8 @@ public class LevelGeneration : MonoBehaviour
                 // Now I must replace the room BEFORE going down with a room that has a DOWN opening, so type 3 or 5
                 Collider2D previousRoom = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 1, whatIsRoom);
                 Debug.Log(previousRoom);
-                if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
+           if (previousRoom != null && previousRoom.GetComponent<Room>() != null) {
+            if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
                 {
 
                     // My problem : if the level generation goes down TWICE in a row, there's a chance that the previous room is just 
@@ -190,6 +191,7 @@ public class LevelGeneration : MonoBehaviour
                         }
                     }
 
+                }
                 }
 
 
