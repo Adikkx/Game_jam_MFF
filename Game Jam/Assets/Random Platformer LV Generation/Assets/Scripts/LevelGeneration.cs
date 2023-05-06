@@ -23,11 +23,14 @@ public class LevelGeneration : MonoBehaviour {
     private void Start()
     {
        
+        Random.InitState(System.DateTime.Now.Millisecond); // Initialize random number generator with current time
         int randStartingPos = Random.Range(0, startingPositions.Length);
+        Debug.Log(startingPositions[randStartingPos].position);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
 
-        direction = Random.Range(1, 6);
+        direction = Random.Range(0, 5);
+        Debug.Log(direction);
     }
 
     private void Update()
@@ -45,68 +48,66 @@ public class LevelGeneration : MonoBehaviour {
         else {
             timeBtwSpawn -= Time.deltaTime;
         }
+        direction = Random.Range(0, 5);
+        Debug.Log(direction);
     }
 
     private void Move()
-    {
+{
+    if (direction == 1 || direction == 2)
+    { // Move right !
+        if (transform.position.x < 25)
+        {
+            downCounter = 0;
+            Vector2 pos = new Vector2(transform.position.x + moveIncrement, transform.position.y);
+            transform.position = pos;
 
-        if (direction == 1 || direction == 2)
-        { // Move right !
-          
-            if (transform.position.x < 25)
+            int randRoom = Random.Range(1, 4);
+            Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+
+            // Makes sure the level generator doesn't move left !
+            direction = Random.Range(1, 6);
+            if (direction == 3)
             {
-                downCounter = 0;
-                Vector2 pos = new Vector2(transform.position.x + moveIncrement, transform.position.y);
-                transform.position = pos;
-
-                int randRoom = Random.Range(1, 4);
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-
-                // Makes sure the level generator doesn't move left !
-                direction = Random.Range(1, 6);
-                if (direction == 3)
-                {
-                    direction = 1;
-                }
-                else if (direction == 4)
-                {
-                    direction = 5;
-                }
+                direction = 1;
             }
-            else {
+            else if (direction == 4)
+            {
                 direction = 5;
             }
         }
-        else if (direction == 3 || direction == 4)
-        { // Move left !
-           
-            if (transform.position.x > 0)
-            {
-                downCounter = 0;
-                Vector2 pos = new Vector2(transform.position.x - moveIncrement, transform.position.y);
-                transform.position = pos;
-
-                int randRoom = Random.Range(1, 4);
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-
-                direction = Random.Range(3, 6);
-            }
-            else {
-                direction = 5;
-            }
-           
+        else {
+            direction = 5;
         }
-        else if (direction == 5)
-        { // MoveDown
-            downCounter++;
-            if (transform.position.y > -25)
+    }
+    else if (direction == 3 || direction == 4)
+    { // Move left !
+        if (transform.position.x > 0)
+        {
+            downCounter = 0;
+            Vector2 pos = new Vector2(transform.position.x - moveIncrement, transform.position.y);
+            transform.position = pos;
+
+            int randRoom = Random.Range(1, 4);
+            Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+
+            direction = Random.Range(3, 5);
+        }
+        else {
+            direction = 5;
+        }
+    }
+    else if (direction == 5)
+    { // MoveDown
+        downCounter++;
+        if (transform.position.y > -25)
+        {
+            // Now I must replace the room BEFORE going down with a room that has a DOWN opening, so type 3 or 5
+            Collider2D previousRoom = Physics2D.OverlapCircle(transform.position, 1, whatIsRoom);
+            if (previousRoom != null && previousRoom.GetComponent<Room>() != null)
             {
-                // Now I must replace the room BEFORE going down with a room that has a DOWN opening, so type 3 or 5
-                Collider2D previousRoom = Physics2D.OverlapCircle(transform.position, 1, whatIsRoom);
-                Debug.Log(previousRoom);
                 if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
                 {
-
                     // My problem : if the level generation goes down TWICE in a row, there's a chance that the previous room is just 
                     // a LRB, meaning there's no TOP opening for the other room ! 
 
@@ -125,24 +126,22 @@ public class LevelGeneration : MonoBehaviour {
                         }
                         Instantiate(rooms[randRoomDownOpening], transform.position, Quaternion.identity);
                     }
-
                 }
-                
-               
-  
-                Vector2 pos = new Vector2(transform.position.x, transform.position.y - moveIncrement);
-                transform.position = pos;
-
-                // Makes sure the room we drop into has a TOP opening !
-                int randRoom = Random.Range(3, 5);
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
-
-                direction = Random.Range(1, 6);
-            }
-            else {
-                stopGeneration = true;
             }
             
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y - moveIncrement);
+            transform.position = pos;
+
+            // Makes sure the room we drop into has a TOP opening !
+            int randRoom = Random.Range(3, 5);
+            Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+
+            direction = Random.Range(1, 5);
+        }
+        else {
+            stopGeneration = true;
         }
     }
+}
+
 }
