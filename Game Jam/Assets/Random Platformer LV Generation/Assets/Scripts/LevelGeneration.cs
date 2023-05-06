@@ -23,7 +23,7 @@ public class LevelGeneration : MonoBehaviour
     public float minY;
     private float timeBtwSpawn;
     public float startTimeBtwSpawn;
-
+    private Vector3 pos;
     public LayerMask whatIsRoom;
 
 
@@ -34,8 +34,9 @@ public class LevelGeneration : MonoBehaviour
         transform.position = startingPositions[randStartingPos].position;
         player.transform.position = transform.position;
         camera.GetComponent<CinemachineVirtualCamera>().Follow = startingPositions[randStartingPos];
+        pos = new Vector3(transform.position.x, transform.position.y, -1);
+        transform.position = pos;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
-
         direction = Random.Range(1, 6);
     }
 
@@ -49,7 +50,9 @@ public class LevelGeneration : MonoBehaviour
 
         if (timeBtwSpawn <= 0 && stopGeneration == false)
         {
+            player.GetComponent<PlayerController>().LockMovement();
             Move();
+            player.GetComponent<PlayerController>().UnlockMovement();
             timeBtwSpawn = startTimeBtwSpawn;
         }
         else
@@ -67,10 +70,9 @@ public class LevelGeneration : MonoBehaviour
             if (transform.position.x < maxX)
             {
                 downCounter = 0;
-                Vector2 pos = new Vector2(transform.position.x + moveIncrementX, transform.position.y);
-                transform.position = pos;
-
                 int randRoom = Random.Range(1, 4);
+                pos = new Vector3(transform.position.x + moveIncrementX, transform.position.y, -1);
+                transform.position = pos;
                 Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
 
                 // Makes sure the level generator doesn't move left !
@@ -95,7 +97,7 @@ public class LevelGeneration : MonoBehaviour
             if (transform.position.x > minX)
             {
                 downCounter = 0;
-                Vector2 pos = new Vector2(transform.position.x - moveIncrementX, transform.position.y);
+                Vector3 pos = new Vector3(transform.position.x - moveIncrementX, transform.position.y, -1);
                 transform.position = pos;
 
                 int randRoom = Random.Range(1, 4);
@@ -116,7 +118,7 @@ public class LevelGeneration : MonoBehaviour
             {
                 // Now I must replace the room BEFORE going down with a room that has a DOWN opening, so type 3 or 5
                 Collider2D previousRoom = Physics2D.OverlapCircle(transform.position, 1, whatIsRoom);
-                Debug.Log(previousRoom);
+                //Debug.Log(previousRoom);
                 if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
                 {
 
@@ -126,6 +128,7 @@ public class LevelGeneration : MonoBehaviour
                     if (downCounter >= 2)
                     {
                         previousRoom.GetComponent<Room>().RoomDestruction();
+                        transform.position = new Vector3(transform.position.x, transform.position.y, -1);
                         Instantiate(rooms[4], transform.position, Quaternion.identity);
                     }
                     else
@@ -136,6 +139,8 @@ public class LevelGeneration : MonoBehaviour
                         {
                             randRoomDownOpening = 2;
                         }
+
+                        transform.position = new Vector3(transform.position.x, transform.position.y, -1);
                         Instantiate(rooms[randRoomDownOpening], transform.position, Quaternion.identity);
                     }
 
@@ -143,7 +148,7 @@ public class LevelGeneration : MonoBehaviour
 
 
 
-                Vector2 pos = new Vector2(transform.position.x, transform.position.y - moveIncrementY);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y - moveIncrementY, -1);
                 transform.position = pos;
 
                 // Makes sure the room we drop into has a TOP opening !
@@ -155,7 +160,6 @@ public class LevelGeneration : MonoBehaviour
             else
             {
                 stopGeneration = true;
-                player.GetComponent<PlayerController>().canMove = true;
             }
 
         }
