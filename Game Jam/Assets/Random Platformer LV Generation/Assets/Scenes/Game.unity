@@ -245,6 +245,7 @@ MonoBehaviour:
   - {fileID: 1711888464712350, guid: 8228f2f5ddd024e45ae49e9e046cf675, type: 3}
   - {fileID: 1942163711769760, guid: e8b739a65aefeaf4196add5273203e16, type: 3}
   player: {fileID: 1240341206}
+  camera: {fileID: 78383145}
   moveIncrementX: 14
   moveIncrementY: 10
   minX: -7
