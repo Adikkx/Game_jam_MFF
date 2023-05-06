@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142016954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6140, y: -3171, z: 0}
+  m_LocalPosition: {x: 6100.5, y: -3199.8, z: 0}
   m_LocalScale: {x: 3, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -166,13 +166,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4409eb5fcf367489f8072acfbc72cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPositions: []
+  startingPositions:
+  - {fileID: 906480184}
+  - {fileID: 2142324643}
+  - {fileID: 760181481}
+  - {fileID: 726487542}
+  - {fileID: 876782481}
   rooms:
-  - {fileID: 1126101229901138, guid: 18b57c302d0e0f7488a57e33d903fa5f, type: 3}
-  - {fileID: 1085056731411214, guid: d419687839059454ca139b091962f13a, type: 3}
-  - {fileID: 1295459993966546, guid: 0f3eb2722e535cc4d98aa914b87f7dd9, type: 3}
-  - {fileID: 1585976779778118, guid: a54e11b035cc86a44a3649846f45cae5, type: 3}
-  - {fileID: 1656818316052936, guid: 242e3886254cd184cad46181da132ff3, type: 3}
+  - {fileID: 1819742035316322, guid: ab29741fc42fed243a73343e16dfde25, type: 3}
+  - {fileID: 1318009043472772, guid: fc7181160622e6345acb65f19379e29d, type: 3}
+  - {fileID: 1442202877403164, guid: c08773aa125a12c47816b2e49b477874, type: 3}
+  - {fileID: 1711888464712350, guid: 8228f2f5ddd024e45ae49e9e046cf675, type: 3}
+  - {fileID: 1942163711769760, guid: e8b739a65aefeaf4196add5273203e16, type: 3}
   moveIncrement: 0
   startTimeBtwSpawn: 0
   whatIsRoom:
@@ -317,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6196.2, y: -3238.3, z: -10}
+  m_LocalPosition: {x: 6165.6, y: -3215.3, z: -10}
   m_LocalScale: {x: 1, y: 2.9504, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
