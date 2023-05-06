@@ -155,6 +155,7 @@ public class LevelGeneration : MonoBehaviour
             else
             {
                 stopGeneration = true;
+                player.GetComponent<PlayerController>().canMove = true;
             }
 
         }

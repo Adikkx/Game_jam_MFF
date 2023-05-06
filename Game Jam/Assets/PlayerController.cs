@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D body;
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+
+    public bool canMove = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         if (direction == Vector2.zero) return false;
         int count = body.Cast(direction, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
-        if (count == 0)
+        if (count == 0 && canMove)
         {
             body.MovePosition(body.position + direction * moveSpeed * Time.fixedDeltaTime);
             return true;
