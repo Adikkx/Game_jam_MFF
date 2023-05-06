@@ -168,8 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPositions: []
   rooms:
-  - {fileID: 1126101229901138, guid: 18b57c302d0e0f7488a57e33d903fa5f, type: 3}
   - {fileID: 1656818316052936, guid: 242e3886254cd184cad46181da132ff3, type: 3}
+  - {fileID: 1126101229901138, guid: 18b57c302d0e0f7488a57e33d903fa5f, type: 3}
   - {fileID: 1295459993966546, guid: 0f3eb2722e535cc4d98aa914b87f7dd9, type: 3}
   - {fileID: 1585976779778118, guid: a54e11b035cc86a44a3649846f45cae5, type: 3}
   - {fileID: 1085056731411214, guid: d419687839059454ca139b091962f13a, type: 3}

@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 1265759502714698, guid: a624c5d2f04a61241b9f2a9002a7bf8f, type: 3}
+  - {fileID: 1942163711769760, guid: e8b739a65aefeaf4196add5273203e16, type: 3}
 --- !u!1 &1609760231641682
 GameObject:
   m_ObjectHideFlags: 0
