@@ -41,7 +41,7 @@ public class LevelGeneration : MonoBehaviour
         doorRoom = false;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
         //Instantiate(doorRooms[1], new Vector2(transform.position.x + 2*maxX, transform.position.y), Quaternion.identity);
-        direction = Random.Range(1, 6);
+        direction = Random.Range(0, 5);
     }
 
     private void Update()
