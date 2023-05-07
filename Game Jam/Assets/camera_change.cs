@@ -20,8 +20,9 @@ public class camera_change : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.tag == "Player")
         camera.GetComponent<CinemachineVirtualCamera>().Follow = FollowPoint;
     }
 

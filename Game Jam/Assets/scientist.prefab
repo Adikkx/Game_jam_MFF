@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 5314897365985760862}
   - component: {fileID: 5314897365985760865}
   - component: {fileID: 5314897365985760864}
+  - component: {fileID: 3257290379391919762}
+  - component: {fileID: 1152288422145277310}
+  - component: {fileID: 1741264393066703040}
   m_Layer: 0
   m_Name: scientist
   m_TagString: Enemy
@@ -109,3 +112,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &3257290379391919762
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314897365985760867}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1152288422145277310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314897365985760867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93195840c57611441995e1afdbba4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogue:
+  - Hey my dear Expe...I'm sorry , my human to...Sorry my human...
+  - DON'T GO ANYWHERE UNTIL I COME BACK
+  continuebutt: {fileID: 0}
+  wordSpeed: 0.05
+  playerIsClose: 0
+  dialogFinished: 0
+  targ: {fileID: 0}
+--- !u!70 &1741264393066703040
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314897365985760867}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.069783635, y: -0.12038609}
+  m_Size: {x: 1.420432, y: 3.5492284}
+  m_Direction: 0

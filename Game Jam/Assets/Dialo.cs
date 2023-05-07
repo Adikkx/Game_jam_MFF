@@ -32,12 +32,18 @@ public class Dialo : MonoBehaviour
         {
             if (transform.position != targ.transform.position)
             {
-                Vector3 pos = Vector3.MoveTowards(transform.position, targ.transform.position, .044f);
+                Vector3 pos = Vector3.MoveTowards(transform.position, targ.transform.position, .09f);
                 GetComponent<Rigidbody2D>().MovePosition(pos);
             }
-            else current = (current + 1) % targ.transform.position.x;
-            transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .044f);
+            else
+            {
+                current = (current + 1) % targ.transform.position.x;
+                transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .09f);
+            }
+
+            
         }
+    
         if (playerIsClose && !dialogFinished)
         {
             Debug.Log("som blizko0");
