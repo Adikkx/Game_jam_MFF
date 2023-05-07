@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Random Platformer LV Generation/Assets/Scenes/Game.unity
     guid: 20df318d5de25ef40b03f20a1ab9da4a
   - enabled: 1
+    path: Assets/Random Platformer LV Generation/Assets/Scenes/Pause.unity
+    guid: 8c7b831d2ddeafc4993ce922858f6180
+  - enabled: 1
     path: Assets/Random Platformer LV Generation/Assets/Scenes/Ending.unity
     guid: 7fe7c6baddd8c5749973648caf53ef14
   m_configObjects: {}
