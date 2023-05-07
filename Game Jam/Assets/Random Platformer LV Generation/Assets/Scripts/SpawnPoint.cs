@@ -16,7 +16,7 @@ public class SpawnPoint : MonoBehaviour
         {
             objectsToSpawn = GetComponentInParent<Room>().material;
         }
-        int rand = Random.Range(0, Math.Min((Leveling.Level + 20), objectsToSpawn.Length));
+        int rand = Random.Range(0, objectsToSpawn.Length);
         GameObject instance = Instantiate(objectsToSpawn[rand], transform.position, Quaternion.identity);
         instance.transform.parent = transform;
     }
