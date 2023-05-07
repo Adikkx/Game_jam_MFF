@@ -18,7 +18,8 @@ public class New_level : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
+        if( Key_Counter.Key >=3)
         reset = true;
-        
+
     }
 }

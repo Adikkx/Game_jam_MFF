@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnPoint : MonoBehaviour
 {
-
+    public static int keys;
     public GameObject[] objectsToSpawn;
 
     private void Start()
@@ -16,8 +16,13 @@ public class SpawnPoint : MonoBehaviour
         {
             objectsToSpawn = GetComponentInParent<Room>().material;
         }
+
         int rand = Random.Range(0, objectsToSpawn.Length);
         GameObject instance = Instantiate(objectsToSpawn[rand], transform.position, Quaternion.identity);
         instance.transform.parent = transform;
+    }
+    private void Update()
+    {
+        
     }
 }
