@@ -13,17 +13,24 @@ public class Dialo : MonoBehaviour
     public GameObject continuebutt;
     public float wordSpeed;
     public bool playerIsClose;
+    public bool dialogFinished;
+    public GameObject targ;
 
 
     void Start()
     {
+        dialogFinished = false;
         dialogueText.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerIsClose)
+        if (dialogFinished)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .048f);
+        }
+        if (playerIsClose && !dialogFinished)
         {
             Debug.Log("som blizko0");
             if (!dialoguePanel.activeInHierarchy)
@@ -99,7 +106,8 @@ public class Dialo : MonoBehaviour
             playerIsClose = false;
             RemoveText();
             dialoguePanel.SetActive(false);
-            Destroy(gameObject);
+            dialogFinished = true;
+            //Destroy(gameObject);
         }
     }
 }
