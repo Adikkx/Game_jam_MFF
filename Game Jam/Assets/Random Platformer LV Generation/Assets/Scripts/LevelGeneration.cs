@@ -148,13 +148,12 @@ public class LevelGeneration : MonoBehaviour
                 Collider2D previousRoom = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 1, whatIsRoom);
                 Debug.Log(previousRoom);
            if (previousRoom != null && previousRoom.GetComponent<Room>() != null) {
-                if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
-                {
+                
 
                     // My problem : if the level generation goes down TWICE in a row, there's a chance that the previous room is just 
                     // a LRB, meaning there's no TOP opening for the other room ! 
 
-                    if (downCounter >= 2)
+                    if (downCounter >= 0)
                     {
                         previousRoom.GetComponent<Room>().RoomDestruction();
                         transform.position = new Vector2(transform.position.x, transform.position.y);
@@ -191,7 +190,6 @@ public class LevelGeneration : MonoBehaviour
                         }
                     }
 
-                }
                 }
 
 
