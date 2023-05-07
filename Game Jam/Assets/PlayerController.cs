@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        LevelText.text=Leveling.Level.ToString();
+       // LevelText.text=" "+Leveling.Level;
+        Debug.Log(" "+Leveling.Level);
     }
 
     private void FixedUpdate()
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
         if(collision.tag=="Door")
         {
             Leveling.Level +=1;
-            LevelText.text=Leveling.Level.ToString();
+        //    LevelText.text=" "+Leveling.Level;
         } 
     }
 }
