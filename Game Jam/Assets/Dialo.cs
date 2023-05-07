@@ -29,7 +29,7 @@ public class Dialo : MonoBehaviour
     {
         if (dialogFinished)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .045f);
+            transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .044f);
         }
         if (playerIsClose && !dialogFinished)
         {
@@ -67,7 +67,7 @@ public class Dialo : MonoBehaviour
         index=0;
         dialoguePanel.SetActive(false);
     }
-    IEnumerator Typing()
+    public IEnumerator Typing()
     {
         foreach(char letter in dialogue[index].ToCharArray())
         {
@@ -98,7 +98,7 @@ public class Dialo : MonoBehaviour
         {
             if (dialogFinished)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             }
             playerIsClose = true;
         }
