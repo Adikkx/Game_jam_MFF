@@ -52,7 +52,7 @@ public class LevelGeneration : MonoBehaviour
     private void Update()
     {
         //print(doorRoom);
-        if (Keyboard.current.spaceKey.wasPressedThisFrame || reset)
+        if (Keyboard.current.rKey.wasPressedThisFrame || reset)
         {
             //doorRoom = false;
             reset = false;
