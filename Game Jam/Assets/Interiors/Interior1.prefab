@@ -132,6 +132,8 @@ MonoBehaviour:
   objectsToSpawn:
   - {fileID: 1265759502714698, guid: a624c5d2f04a61241b9f2a9002a7bf8f, type: 3}
   - {fileID: 266075748781459390, guid: 8b8e2c9be6b038341ba2912010f4ab11, type: 3}
+  - {fileID: 1265759502714698, guid: a624c5d2f04a61241b9f2a9002a7bf8f, type: 3}
+  - {fileID: 1265759502714698, guid: a624c5d2f04a61241b9f2a9002a7bf8f, type: 3}
 --- !u!1 &3844586925694922370
 GameObject:
   m_ObjectHideFlags: 0
