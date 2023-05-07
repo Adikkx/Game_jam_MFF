@@ -39,7 +39,7 @@ public class LevelGeneration : MonoBehaviour
         pos = new Vector2(transform.position.x, transform.position.y);
         transform.position = pos;
         doorRoom = false;
-        Instantiate(rooms[1], transform.position, Quaternion.identity);
+        Instantiate(rooms[3], transform.position, Quaternion.identity);
         //Instantiate(doorRooms[1], new Vector2(transform.position.x + 2*maxX, transform.position.y), Quaternion.identity);
         direction = Random.Range(0, 5);
     }
@@ -148,7 +148,7 @@ public class LevelGeneration : MonoBehaviour
                 Collider2D previousRoom = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 1, whatIsRoom);
                 Debug.Log(previousRoom);
            if (previousRoom != null && previousRoom.GetComponent<Room>() != null) {
-            if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
+                if (previousRoom.GetComponent<Room>().roomType != 4 && previousRoom.GetComponent<Room>().roomType != 2)
                 {
 
                     // My problem : if the level generation goes down TWICE in a row, there's a chance that the previous room is just 
@@ -172,11 +172,11 @@ public class LevelGeneration : MonoBehaviour
                     else
                     {
                         previousRoom.GetComponent<Room>().RoomDestruction();
-                        int randRoomDownOpening = Random.Range(1, 4);
-                        if (randRoomDownOpening == 3)
+                        int randRoomDownOpening = Random.Range(2, 4);
+                        /*if (randRoomDownOpening == 3)
                         {
                             randRoomDownOpening = 2;
-                        }
+                        }*/
 
                         transform.position = new Vector2(transform.position.x, transform.position.y);
                         int rando = Random.Range(0, 2);
