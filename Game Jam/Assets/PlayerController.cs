@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput;
     public int Level;
     private Rigidbody2D body;
+    public Text LevelText;
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     private Animator animator;
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        LevelText.text=Leveling.Level.ToString();
     }
 
     private void FixedUpdate()
@@ -90,7 +93,7 @@ public class PlayerController : MonoBehaviour
         if(collision.tag=="Door")
         {
             Leveling.Level +=1;
-            Debug.Log(Leveling.Level);
+            LevelText.text=Leveling.Level.ToString();
         } 
     }
 }
