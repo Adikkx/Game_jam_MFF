@@ -1937,6 +1937,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba812ed056691a948b4c92f42d74a0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ujkochujko: {fileID: 0}
+  LevelText: {fileID: 0}
+  player: {fileID: 5907287805609380437, guid: 5d62631ee4cefdd47b8abf820a866a1b, type: 3}
   reset: 0
 --- !u!1 &6749837429585915839
 GameObject:

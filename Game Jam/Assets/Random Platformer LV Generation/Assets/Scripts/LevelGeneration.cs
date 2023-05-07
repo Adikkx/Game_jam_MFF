@@ -37,7 +37,8 @@ public class LevelGeneration : MonoBehaviour
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         player.transform.position = transform.position;
-        scientist.transform.position=new Vector2(transform.position.x-5,transform.position.y);
+        //if (Leveling.Level <=1){
+        scientist.transform.position=new Vector2(transform.position.x-5,transform.position.y);//}
         camera.GetComponent<CinemachineVirtualCamera>().Follow = startingPositions[randStartingPos];
         pos = new Vector2(transform.position.x, transform.position.y);
         transform.position = pos;

@@ -91,11 +91,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag=="Door")
+        /*if(collision.tag=="Door")
         {
             Leveling.Level +=1;
             LevelText.text=""+Leveling.Level;
-        } 
+        } */
         if(collision.tag=="KEy")
         {
             Key_Counter.Key += 1;

@@ -99,6 +99,7 @@ public class Dialo : MonoBehaviour
             playerIsClose = false;
             RemoveText();
             dialoguePanel.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
