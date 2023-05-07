@@ -96,5 +96,11 @@ public class PlayerController : MonoBehaviour
             Leveling.Level +=1;
             LevelText.text=""+Leveling.Level;
         } 
+        if(collision.tag=="KEy")
+        {
+            Key_Counter.Key += 1;
+            Debug.Log(Key_Counter.Key);
+        } 
+        
     }
 }

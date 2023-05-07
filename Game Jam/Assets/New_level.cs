@@ -18,7 +18,7 @@ public class New_level : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
-       // PlayerController.Level +=1;
         reset = true;
+        
     }
 }
