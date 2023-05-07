@@ -843,6 +843,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 4
+  material:
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: 6db7fc52f46b64444bb7ea82a0d3bbba, type: 3}
+  - {fileID: 1059517145776296, guid: a0f55acc8c9182b4c87bcb0d777f31e2, type: 3}
+  - {fileID: 1059517145776296, guid: 0eaf6c8defb2b7b408076b5f5f6c6529, type: 3}
+  - {fileID: 1059517145776296, guid: 789cb061bf280cd4a9e7a6e7f610341f, type: 3}
 --- !u!1 &1660607876503734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba812ed056691a948b4c92f42d74a0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reset: 0
 --- !u!1 &6749837429585915839
 GameObject:
   m_ObjectHideFlags: 0
