@@ -7,11 +7,11 @@ public class camera_change : MonoBehaviour
 {
     public GameObject camera;
 
-    public Transform FollowPoint;
+    private Transform FollowPoint;
     // Start is called before the first frame update
     void Start()
     {
-
+        FollowPoint = transform;
     }
 
     // Update is called once per frame
