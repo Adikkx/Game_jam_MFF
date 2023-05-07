@@ -16,6 +16,7 @@ public class Dialo : MonoBehaviour
     public bool playerIsClose;
     public bool dialogFinished;
     public GameObject targ;
+    private float current;
 
 
     void Start()
@@ -29,6 +30,12 @@ public class Dialo : MonoBehaviour
     {
         if (dialogFinished)
         {
+            if (transform.position != targ.transform.position)
+            {
+                Vector3 pos = Vector3.MoveTowards(transform.position, targ.transform.position, .044f);
+                GetComponent<Rigidbody2D>().MovePosition(pos);
+            }
+            else current = (current + 1) % targ.transform.position.x;
             transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .044f);
         }
         if (playerIsClose && !dialogFinished)
