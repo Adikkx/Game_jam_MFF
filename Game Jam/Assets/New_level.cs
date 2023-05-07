@@ -26,10 +26,13 @@ public class New_level : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
-        if( Key_Counter.Key >=3 ){
+        if( Key_Counter.Key >=3 )
+        {
         Leveling.Level +=1;
         LevelText.text=""+Leveling.Level;
-        reset = true;}
+        reset = true;
+        GameObject.Find("scientist").GetComponent<Dialo>().dialogFinished = false;
+        }
         if (Leveling.Level==5)
         {
             player.transform.position = transform.position;
