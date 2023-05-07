@@ -10,7 +10,7 @@ public class Dialo : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public string[] dialogue;
     private int index = 0; 
-
+    public GameObject continuebutt;
     public float wordSpeed;
     public bool playerIsClose;
 
@@ -23,22 +23,26 @@ public class Dialo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( playerIsClose)
+        if (playerIsClose)
         {
+            Debug.Log("som blizko0");
             if (!dialoguePanel.activeInHierarchy)
-            {
+            {   Debug.Log("aktivujem picovinu");
                 dialoguePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
-            else if (dialogueText.text == dialogue[index])
-            {
-                NextLine();
-            }
+           // else if (dialogueText.text == dialogue[index])
+            //{
+             //   NextLine();
+            //}
 
         }
-        if (dialoguePanel.activeInHierarchy)
+        if (dialoguePanel.activeInHierarchy && !playerIsClose)
         {
             RemoveText();
+        }
+        if ((dialogueText.text == dialogue[index])){
+            continuebutt.SetActive(true);
         }
     }
 
@@ -46,9 +50,15 @@ public class Dialo : MonoBehaviour
     {
         dialogueText.text = "";
         index = 0;
-        dialoguePanel.SetActive(false);
+        Debug.Log("deaktivujem pičovinu");
+        //dialoguePanel.SetActive(false);
     }
 
+    public void zero_text(){
+        dialogueText.text="";
+        index=0;
+        dialoguePanel.SetActive(false);
+    }
     IEnumerator Typing()
     {
         foreach(char letter in dialogue[index].ToCharArray())
@@ -60,6 +70,8 @@ public class Dialo : MonoBehaviour
 
     public void NextLine()
     {
+
+        continuebutt.SetActive(false);
         if (index < dialogue.Length - 1)
         {
             index++;
@@ -86,6 +98,7 @@ public class Dialo : MonoBehaviour
         {
             playerIsClose = false;
             RemoveText();
+            dialoguePanel.SetActive(false);
         }
     }
 }
