@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Dialo : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Dialo : MonoBehaviour
     {
         if (dialogFinished)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .048f);
+            transform.position = Vector3.MoveTowards(transform.position, targ.transform.position, .045f);
         }
         if (playerIsClose && !dialogFinished)
         {
@@ -95,6 +96,10 @@ public class Dialo : MonoBehaviour
     {
         if (other.tag==("Player"))
         {
+            if (dialogFinished)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
             playerIsClose = true;
         }
     }
