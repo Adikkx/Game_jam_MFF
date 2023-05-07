@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     Vector2 movementInput;
+    public int Level;
     private Rigidbody2D body;
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -84,5 +85,12 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag=="Door")
+        {
+            Leveling.Level +=1;
+            Debug.Log(Leveling.Level);
+        } 
+    }
 }

@@ -53,6 +53,7 @@ public class LevelGeneration : MonoBehaviour
         {
             //doorRoom = false;
             reset = false;
+            if (Keyboard.current.spaceKey.wasPressedThisFrame) Leveling.Level =1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
